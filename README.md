@@ -1,6 +1,15 @@
 # OAuth2 Handler
 
+[![PyPI version](https://badge.fury.io/py/oauth2handler.svg)](https://badge.fury.io/py/oauth2handler)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A simple, flexible OAuth2 client library for developers.
+
+## Installation
+
+```bash
+pip install oauth2handler
+```
 
 ## Features
 

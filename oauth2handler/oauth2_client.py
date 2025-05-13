@@ -259,10 +259,28 @@ class OAuth2Client:
         # Add client secret if not using PKCE
         if not self.config.use_pkce:
             data["client_secret"] = self.config.client_secret
-            
-        try:
+              try:
             response = requests.post(self.config.token_url, data=data)
-            response.raise_for_status()
+            
+            # Handle common error responses with more detailed information
+            if not response.ok:
+                error_data = {}
+                try:
+                    error_data = response.json()
+                except Exception:
+                    pass
+                
+                error_desc = error_data.get("error_description", "")
+                error_type = error_data.get("error", "")
+                status_code = response.status_code
+                
+                if error_type == "invalid_grant":
+                    raise TokenError(f"Refresh token expired or revoked: {error_desc}")
+                elif status_code == 429:
+                    raise TokenError(f"Rate limit exceeded: {error_desc}")
+                else:
+                    raise TokenError(f"Token refresh failed: {status_code} - {error_type} {error_desc}")
+            
             token_data = response.json()
             
             # Most services don't return a new refresh token, so keep the old one
@@ -274,7 +292,8 @@ class OAuth2Client:
                 
             return token_data["access_token"]
         except requests.RequestException as e:
-            raise TokenError(f"Token refresh failed: {e}")
+            logger.error(f"[{self.service_name}] Network error during token refresh: {e}")
+            raise TokenError(f"Token refresh network error: {e}")
             
     def revoke_token(self, token_type: str = "access_token") -> bool:
         """Revoke a token if the service supports token revocation.

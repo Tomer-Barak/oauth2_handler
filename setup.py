@@ -5,16 +5,16 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="oauth2handler",
-    version="0.1.0",
+    version="0.1.1",
     author="OAuth2 Handler Contributors",
-    author_email="developer@example.com",
+    author_email="tomer.barak.mail@gmail.com",
     description="A simple OAuth2 client for developers",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/username/oauth2handler",
+    url="https://github.com/Tomer-Barak/oauth2handler",
     project_urls={
-        "Bug Tracker": "https://github.com/username/oauth2handler/issues",
-        "Source Code": "https://github.com/username/oauth2handler",
+        "Bug Tracker": "https://github.com/Tomer-Barak/oauth2handler/issues",
+        "Source Code": "https://github.com/Tomer-Barak/oauth2handler",
     },
     license="MIT",
     packages=find_packages(),

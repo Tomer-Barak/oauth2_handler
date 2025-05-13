@@ -6,7 +6,7 @@ import json
 import hashlib
 import base64
 import secrets
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, Any, Optional
 
 # Constants
@@ -26,7 +26,7 @@ def get_token_file(service_name: str) -> str:
 def save_token(service_name: str, data: Dict[str, Any]) -> None:
     """Save token data to a file."""
     ensure_token_dir()
-    data["timestamp"] = datetime.utcnow().isoformat()
+    data["timestamp"] = datetime.now(timezone.utc).isoformat()
     with open(get_token_file(service_name), "w") as f:
         json.dump(data, f)
 
