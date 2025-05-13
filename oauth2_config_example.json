@@ -1,0 +1,40 @@
+{
+  "github": {
+    "flow": "authorization_code",
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "auth_url": "https://github.com/login/oauth/authorize",
+    "token_url": "https://github.com/login/oauth/access_token",
+    "redirect_uri": "http://localhost",
+    "scope": "repo user",
+    "extra_params": {
+      "allow_signup": "true"
+    }
+  },
+  "google": {
+    "flow": "authorization_code",
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "auth_url": "https://accounts.google.com/o/oauth2/auth",
+    "token_url": "https://oauth2.googleapis.com/token",
+    "redirect_uri": "http://localhost",
+    "scope": "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile",
+    "revocation_url": "https://oauth2.googleapis.com/revoke"
+  },
+  "spotify": {
+    "flow": "authorization_code",
+    "client_id": "YOUR_CLIENT_ID", 
+    "auth_url": "https://accounts.spotify.com/authorize",
+    "token_url": "https://accounts.spotify.com/api/token",
+    "redirect_uri": "http://localhost",
+    "scope": "user-read-private user-read-email",
+    "use_pkce": true
+  },
+  "api_service": {
+    "flow": "client_credentials",
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "token_url": "https://api.example.com/oauth2/token",
+    "scope": "read write"
+  }
+}
