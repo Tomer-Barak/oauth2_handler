@@ -1,0 +1,18 @@
+{
+  "my_service_cc": {
+    "flow": "client_credentials",
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "token_url": "https://api.example.com/oauth2/token",
+    "scope": "read write"
+  },
+  "my_service_auth": {
+    "flow": "authorization_code",
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "auth_url": "https://api.example.com/oauth2/authorize",
+    "token_url": "https://api.example.com/oauth2/token",
+    "redirect_uri": "http://localhost",
+    "scope": "read_profile read_data"
+  }
+}
